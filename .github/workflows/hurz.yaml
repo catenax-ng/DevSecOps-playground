@@ -26,7 +26,7 @@ jobs:
         with:
           source_file: 'Readme.md'
           destination_repo: 'catenax-ng/playground-target'
-          destination_folder: 'foldertest'
+          destination_folder: ''
           user_email: 'dispatch@email.com'
           user_name: 'dispatch'
           commit_message: 'testing'
