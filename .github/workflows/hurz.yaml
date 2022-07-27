@@ -1,0 +1,32 @@
+name: dispatchtest
+on: 
+  workflow_dispatch:
+    inputs:
+      example:
+        description: "content here"
+        required: true
+        default: "no content"
+
+jobs:
+  get-temp-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
+          application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
+      
+      - name: Use Application Token to push stuff
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
+        with:
+          source_file: 'README.md'
+          destination_repo: 'catenax-ng/playground-target'
+          destination_folder: 'foldertest'
+          user_email: 'dispatch@email.com'
+          user_name: 'dispatch'
+          commit_message: 'testing'
