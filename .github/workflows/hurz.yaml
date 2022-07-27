@@ -24,7 +24,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
         with:
-          source_file: 'README.md'
+          source_file: 'Readme.md'
           destination_repo: 'catenax-ng/playground-target'
           destination_folder: 'foldertest'
           user_email: 'dispatch@email.com'
