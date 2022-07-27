@@ -1,0 +1,20 @@
+name: test2
+on: 
+  workflow_dispatch:
+    inputs:
+      example:
+        description: "content here"
+        required: true
+        default: "no content"
+
+jobs:
+  get-temp-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: catenax-ng/playground-target/Demo@v1
+        with:
+          application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
+          application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
