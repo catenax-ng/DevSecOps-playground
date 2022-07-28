@@ -30,10 +30,10 @@ jobs:
         env:
           TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          curl \
+          curl -v \
             --request POST \
             --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
-            --header "authorization: Bearer {{ env.TOKEN }}" \
+            --header "authorization: Bearer {{ TOKEN }}" \
             --header "Accept: application/vnd.github.v3+json" \
             --data '{"ref":"main"}' \
             --fail
