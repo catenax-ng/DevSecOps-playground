@@ -28,7 +28,7 @@ jobs:
       - name: trigger-workflow
         id: call_action
         env:
-          GITHUB_TOKEN: ${{ secrets.steps.get_workflow_token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           curl \
             --request POST \
