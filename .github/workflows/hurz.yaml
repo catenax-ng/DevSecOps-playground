@@ -19,8 +19,21 @@ jobs:
           application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
           application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
       
-      - name: trigger external action
+      #- name: trigger external action
+      #  id: call_action
+      #  env:
+      #    API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
+      #  uses: catenax-ng/playground-target/Demo@v1
+      
+      - name: trigger-workflow
         id: call_action
         env:
           API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
-        uses: catenax-ng/playground-target/Demo@v1
+        run: |
+          curl \
+            --request POST \
+            --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
+            --header "authorization: Bearer ${{ API_TOKEN_GITHUB }}" \
+            --header "Accept: application/vnd.github.v3+json" \
+            --data '{"ref":"main"}' \
+            --fail
