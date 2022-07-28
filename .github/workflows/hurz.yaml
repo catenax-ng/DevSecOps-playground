@@ -19,14 +19,6 @@ jobs:
           application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
           application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
       
-      - name: Use Application Token to push stuff
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
-        with:
-          source_file: 'Readme.md'
-          destination_repo: 'catenax-ng/playground-target'
-          destination_folder: ''
-          user_email: 'carsten.lenz@daimler.com'
-          user_name: 'Carsten Lenz'
-          commit_message: 'testing'
+      - name: trigger external action
+        id: call_action
+        uses: catenax-ng/playground-target/Demo@v1
