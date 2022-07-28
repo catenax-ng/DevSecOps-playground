@@ -33,7 +33,7 @@ jobs:
           curl -v \
             --request POST \
             --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
-            --header "authorization: Bearer {{ TOKEN }}" \
+            --header "authorization: Bearer $TOKEN" \
             --header "Accept: application/vnd.github.v3+json" \
             --data '{"ref":"main"}' \
             --fail
