@@ -22,7 +22,7 @@ jobs:
       #- name: trigger external action
       #  id: call_action
       #  env:
-      #    API_TOKEN_GITHUB: ${{ secrets.steps.get_workflow_token.outputs.token }}
+      #    API_TOKEN_GITHUB: ${{ steps.get_workflow_token.outputs.token }}
       #  uses: catenax-ng/playground-target/Demo@v1
       
       - name: trigger-workflow
