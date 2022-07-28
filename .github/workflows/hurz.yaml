@@ -10,7 +10,9 @@ on:
 jobs:
   auth-and-dispatch:
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+    
     steps:
       - name: Get Token
         id: get_workflow_token
@@ -27,8 +29,6 @@ jobs:
       
       - name: trigger-workflow
         id: call_action
-        env:
-          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           curl \
             --request POST \
