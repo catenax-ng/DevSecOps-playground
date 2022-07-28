@@ -30,6 +30,6 @@ jobs:
           source_file: 'Readme.md'
           destination_repo: 'catenax-ng/playground-target'
           destination_folder: ''
-          user_email: 'dispatch@email.com'
-          user_name: 'dispatch'
+          user_email: 'carsten.lenz@daimler.com'
+          user_name: 'Carsten Lenz'
           commit_message: 'testing'
