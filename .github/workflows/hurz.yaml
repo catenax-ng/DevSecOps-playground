@@ -28,12 +28,12 @@ jobs:
       - name: trigger-workflow
         id: call_action
         env:
-          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         run: |
           curl \
             --request POST \
             --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
-            --header "authorization: Bearer ${{ GITHUB_TOKEN }}" \
+            --header "authorization: Bearer {{ env.TOKEN }}" \
             --header "Accept: application/vnd.github.v3+json" \
             --data '{"ref":"main"}' \
             --fail
