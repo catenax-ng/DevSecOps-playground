@@ -19,12 +19,6 @@ jobs:
           application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
           application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
       
-      #- name: trigger external action
-      #  id: call_action
-      #  env:
-      #    API_TOKEN_GITHUB: ${{ steps.get_workflow_token.outputs.token }}
-      #  uses: catenax-ng/playground-target/Demo@v1
-      
       - name: trigger-workflow
         id: call_action
         env:
@@ -35,5 +29,6 @@ jobs:
             --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
             --header "authorization: Bearer $TOKEN" \
             --header "Accept: application/vnd.github.v3+json" \
-            --data '{"ref":"test_branch","inputs":{"datum":"blubb"}}' \
+            --data '{"ref":"test_branch","inputs":{"any_data":"blubb","any_data2":"bla"}}' \
             --fail
+        # inputs will accept maximum 10 key/value pairs!
