@@ -29,6 +29,6 @@ jobs:
             --url https://api.github.com/repos/catenax-ng/playground-target/actions/workflows/example.yaml/dispatches \
             --header "authorization: Bearer $TOKEN" \
             --header "Accept: application/vnd.github.v3+json" \
-            --data '{"ref":"test_branch","inputs":{"any_data":"blubb","any_data2":"bla"}}' \
+            --data '{"ref":"test_branch","inputs":{"any_data":"blubb"}}' \
             --fail
         # inputs will accept maximum 10 key/value pairs!
